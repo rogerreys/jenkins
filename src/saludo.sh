@@ -1,4 +1,5 @@
 echo "Hola mundo desde Jenkins y github"
-echo "Triggered by poll SCM"
+#echo "-- Triggered by poll SCM ---"
+echo "-- Triggered by github webhook ---"
 echo "Fecha y hora: $(date)"
 echo "Programa ejecutado por: $(whoami)"
