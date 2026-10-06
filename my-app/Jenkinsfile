@@ -1,0 +1,43 @@
+pipeline {
+    agent any // Define en qué nodo/ejecutor corre el pipeline (p. ej. any, docker, etc.)
+
+    environment {
+        // Variables de entorno globales del pipeline
+        APP_NAME = 'java-app'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Compilando ${env.APP_NAME}..."
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Ejecutando pruebas unitarias...'
+                sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Desplegando la aplicación...'
+                sh 'mvn compile exec:java'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Este bloque se ejecuta siempre al finalizar.'
+        }
+        success {
+            echo 'El pipeline finalizó exitosamente.'
+        }
+        failure {
+            echo 'Ocurrió un error durante la ejecución.'
+        }
+    }
+}

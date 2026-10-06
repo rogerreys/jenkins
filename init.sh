@@ -17,7 +17,7 @@ else
 fi
 # Instalar dependencias
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r app/requirements.txt
 
 # Ejecutar las pruebas (toma la config de pytest.ini: src/test)
 # y generar los reportes JUnit (XML) y HTML en la carpeta report/
