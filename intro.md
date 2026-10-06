@@ -44,3 +44,11 @@ Para ver los reportes en Jenkins, en Configurar > Post-build Actions:
 - **Publish HTML reports** (plugin *HTML Publisher*): directorio `report`, archivo `report.html`
 
 Si alguna prueba falla, pytest termina con error y el build queda en rojo (FAILURE).
+
+
+# Contenedor
+Para usarlo:
+docker rm -f jenkins          # solo si ya 
+
+tienes el contenedor anterior corriendo
+docker compose up -d --build

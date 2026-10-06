@@ -10,21 +10,21 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Compilando ${env.APP_NAME}..."
-                sh 'mvn clean install'
+                sh 'cd my-app && mvn clean install'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Ejecutando pruebas unitarias...'
-                sh 'mvn test'
+                sh 'cd my-app && mvn test'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Desplegando la aplicación...'
-                sh 'mvn compile exec:java'
+                sh 'cd my-app && mvn compile exec:java'
             }
         }
     }
